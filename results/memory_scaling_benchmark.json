@@ -1,0 +1,891 @@
+{
+  "context_lengths": [
+    512,
+    1024,
+    2048,
+    4096,
+    8192,
+    16384,
+    32768,
+    65536,
+    131072
+  ],
+  "models": {
+    "Llama-3-8B": {
+      "type": "transformer",
+      "params": "8B",
+      "precisions": {
+        "FP16": [
+          {
+            "seq_len": 512,
+            "bytes": 67108864.0,
+            "megabytes": 64.0,
+            "gigabytes": 0.0625
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 134217728.0,
+            "megabytes": 128.0,
+            "gigabytes": 0.125
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 268435456.0,
+            "megabytes": 256.0,
+            "gigabytes": 0.25
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 536870912.0,
+            "megabytes": 512.0,
+            "gigabytes": 0.5
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 1073741824.0,
+            "megabytes": 1024.0,
+            "gigabytes": 1.0
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 2147483648.0,
+            "megabytes": 2048.0,
+            "gigabytes": 2.0
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 4294967296.0,
+            "megabytes": 4096.0,
+            "gigabytes": 4.0
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 8589934592.0,
+            "megabytes": 8192.0,
+            "gigabytes": 8.0
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 17179869184.0,
+            "megabytes": 16384.0,
+            "gigabytes": 16.0
+          }
+        ],
+        "INT8": [
+          {
+            "seq_len": 512,
+            "bytes": 33554432.0,
+            "megabytes": 32.0,
+            "gigabytes": 0.0312
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 67108864.0,
+            "megabytes": 64.0,
+            "gigabytes": 0.0625
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 134217728.0,
+            "megabytes": 128.0,
+            "gigabytes": 0.125
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 268435456.0,
+            "megabytes": 256.0,
+            "gigabytes": 0.25
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 536870912.0,
+            "megabytes": 512.0,
+            "gigabytes": 0.5
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 1073741824.0,
+            "megabytes": 1024.0,
+            "gigabytes": 1.0
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 2147483648.0,
+            "megabytes": 2048.0,
+            "gigabytes": 2.0
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 4294967296.0,
+            "megabytes": 4096.0,
+            "gigabytes": 4.0
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 8589934592.0,
+            "megabytes": 8192.0,
+            "gigabytes": 8.0
+          }
+        ],
+        "INT4": [
+          {
+            "seq_len": 512,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 33554432.0,
+            "megabytes": 32.0,
+            "gigabytes": 0.0312
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 67108864.0,
+            "megabytes": 64.0,
+            "gigabytes": 0.0625
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 134217728.0,
+            "megabytes": 128.0,
+            "gigabytes": 0.125
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 268435456.0,
+            "megabytes": 256.0,
+            "gigabytes": 0.25
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 536870912.0,
+            "megabytes": 512.0,
+            "gigabytes": 0.5
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 1073741824.0,
+            "megabytes": 1024.0,
+            "gigabytes": 1.0
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 2147483648.0,
+            "megabytes": 2048.0,
+            "gigabytes": 2.0
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 4294967296.0,
+            "megabytes": 4096.0,
+            "gigabytes": 4.0
+          }
+        ]
+      }
+    },
+    "Llama-3-70B": {
+      "type": "transformer",
+      "params": "70B",
+      "precisions": {
+        "FP16": [
+          {
+            "seq_len": 512,
+            "bytes": 167772160.0,
+            "megabytes": 160.0,
+            "gigabytes": 0.1562
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 335544320.0,
+            "megabytes": 320.0,
+            "gigabytes": 0.3125
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 671088640.0,
+            "megabytes": 640.0,
+            "gigabytes": 0.625
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 1342177280.0,
+            "megabytes": 1280.0,
+            "gigabytes": 1.25
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 2684354560.0,
+            "megabytes": 2560.0,
+            "gigabytes": 2.5
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 5368709120.0,
+            "megabytes": 5120.0,
+            "gigabytes": 5.0
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 10737418240.0,
+            "megabytes": 10240.0,
+            "gigabytes": 10.0
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 21474836480.0,
+            "megabytes": 20480.0,
+            "gigabytes": 20.0
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 42949672960.0,
+            "megabytes": 40960.0,
+            "gigabytes": 40.0
+          }
+        ],
+        "INT8": [
+          {
+            "seq_len": 512,
+            "bytes": 83886080.0,
+            "megabytes": 80.0,
+            "gigabytes": 0.0781
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 167772160.0,
+            "megabytes": 160.0,
+            "gigabytes": 0.1562
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 335544320.0,
+            "megabytes": 320.0,
+            "gigabytes": 0.3125
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 671088640.0,
+            "megabytes": 640.0,
+            "gigabytes": 0.625
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 1342177280.0,
+            "megabytes": 1280.0,
+            "gigabytes": 1.25
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 2684354560.0,
+            "megabytes": 2560.0,
+            "gigabytes": 2.5
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 5368709120.0,
+            "megabytes": 5120.0,
+            "gigabytes": 5.0
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 10737418240.0,
+            "megabytes": 10240.0,
+            "gigabytes": 10.0
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 21474836480.0,
+            "megabytes": 20480.0,
+            "gigabytes": 20.0
+          }
+        ],
+        "INT4": [
+          {
+            "seq_len": 512,
+            "bytes": 41943040.0,
+            "megabytes": 40.0,
+            "gigabytes": 0.0391
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 83886080.0,
+            "megabytes": 80.0,
+            "gigabytes": 0.0781
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 167772160.0,
+            "megabytes": 160.0,
+            "gigabytes": 0.1562
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 335544320.0,
+            "megabytes": 320.0,
+            "gigabytes": 0.3125
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 671088640.0,
+            "megabytes": 640.0,
+            "gigabytes": 0.625
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 1342177280.0,
+            "megabytes": 1280.0,
+            "gigabytes": 1.25
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 2684354560.0,
+            "megabytes": 2560.0,
+            "gigabytes": 2.5
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 5368709120.0,
+            "megabytes": 5120.0,
+            "gigabytes": 5.0
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 10737418240.0,
+            "megabytes": 10240.0,
+            "gigabytes": 10.0
+          }
+        ]
+      }
+    },
+    "GPT-2-XL": {
+      "type": "transformer",
+      "params": "1.5B",
+      "precisions": {
+        "FP16": [
+          {
+            "seq_len": 512,
+            "bytes": 157286400.0,
+            "megabytes": 150.0,
+            "gigabytes": 0.1465
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 314572800.0,
+            "megabytes": 300.0,
+            "gigabytes": 0.293
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 629145600.0,
+            "megabytes": 600.0,
+            "gigabytes": 0.5859
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 1258291200.0,
+            "megabytes": 1200.0,
+            "gigabytes": 1.1719
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 2516582400.0,
+            "megabytes": 2400.0,
+            "gigabytes": 2.3438
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 5033164800.0,
+            "megabytes": 4800.0,
+            "gigabytes": 4.6875
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 10066329600.0,
+            "megabytes": 9600.0,
+            "gigabytes": 9.375
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 20132659200.0,
+            "megabytes": 19200.0,
+            "gigabytes": 18.75
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 40265318400.0,
+            "megabytes": 38400.0,
+            "gigabytes": 37.5
+          }
+        ],
+        "INT8": [
+          {
+            "seq_len": 512,
+            "bytes": 78643200.0,
+            "megabytes": 75.0,
+            "gigabytes": 0.0732
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 157286400.0,
+            "megabytes": 150.0,
+            "gigabytes": 0.1465
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 314572800.0,
+            "megabytes": 300.0,
+            "gigabytes": 0.293
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 629145600.0,
+            "megabytes": 600.0,
+            "gigabytes": 0.5859
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 1258291200.0,
+            "megabytes": 1200.0,
+            "gigabytes": 1.1719
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 2516582400.0,
+            "megabytes": 2400.0,
+            "gigabytes": 2.3438
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 5033164800.0,
+            "megabytes": 4800.0,
+            "gigabytes": 4.6875
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 10066329600.0,
+            "megabytes": 9600.0,
+            "gigabytes": 9.375
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 20132659200.0,
+            "megabytes": 19200.0,
+            "gigabytes": 18.75
+          }
+        ],
+        "INT4": [
+          {
+            "seq_len": 512,
+            "bytes": 39321600.0,
+            "megabytes": 37.5,
+            "gigabytes": 0.0366
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 78643200.0,
+            "megabytes": 75.0,
+            "gigabytes": 0.0732
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 157286400.0,
+            "megabytes": 150.0,
+            "gigabytes": 0.1465
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 314572800.0,
+            "megabytes": 300.0,
+            "gigabytes": 0.293
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 629145600.0,
+            "megabytes": 600.0,
+            "gigabytes": 0.5859
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 1258291200.0,
+            "megabytes": 1200.0,
+            "gigabytes": 1.1719
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 2516582400.0,
+            "megabytes": 2400.0,
+            "gigabytes": 2.3438
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 5033164800.0,
+            "megabytes": 4800.0,
+            "gigabytes": 4.6875
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 10066329600.0,
+            "megabytes": 9600.0,
+            "gigabytes": 9.375
+          }
+        ]
+      }
+    },
+    "BDH-150M": {
+      "type": "bdh",
+      "params": "150M",
+      "precisions": {
+        "FP16": [
+          {
+            "seq_len": 512,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 2097152.0,
+            "megabytes": 2.0,
+            "gigabytes": 0.002
+          }
+        ],
+        "INT8": [
+          {
+            "seq_len": 512,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 1048576.0,
+            "megabytes": 1.0,
+            "gigabytes": 0.001
+          }
+        ],
+        "INT4": [
+          {
+            "seq_len": 512,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 524288.0,
+            "megabytes": 0.5,
+            "gigabytes": 0.0005
+          }
+        ]
+      }
+    },
+    "BDH-1B": {
+      "type": "bdh",
+      "params": "1B",
+      "precisions": {
+        "FP16": [
+          {
+            "seq_len": 512,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 16777216.0,
+            "megabytes": 16.0,
+            "gigabytes": 0.0156
+          }
+        ],
+        "INT8": [
+          {
+            "seq_len": 512,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 8388608.0,
+            "megabytes": 8.0,
+            "gigabytes": 0.0078
+          }
+        ],
+        "INT4": [
+          {
+            "seq_len": 512,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 1024,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 2048,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 4096,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 8192,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 16384,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 32768,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 65536,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          },
+          {
+            "seq_len": 131072,
+            "bytes": 4194304.0,
+            "megabytes": 4.0,
+            "gigabytes": 0.0039
+          }
+        ]
+      }
+    }
+  },
+  "gpu_vram_references": {
+    "RTX 4090": 24.0,
+    "NVIDIA A100 (40GB)": 40.0,
+    "NVIDIA A100 (80GB)": 80.0,
+    "NVIDIA H100 (80GB)": 80.0
+  }
+}

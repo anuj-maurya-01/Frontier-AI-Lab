@@ -1,0 +1,12 @@
+﻿# Dependencies
+node_modules/
+dist/
+dist-ssr/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# OS Files
+.DS_Store
+Thumbs.db

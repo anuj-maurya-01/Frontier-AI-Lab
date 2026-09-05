@@ -1,0 +1,261 @@
+{
+  "state_dimension": 64,
+  "decay_lambda": 0.9995,
+  "depth_fractions": [
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "sequence_lengths": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    4000
+  ],
+  "results": [
+    {
+      "seq_len": 100,
+      "depth_pct": 10,
+      "needle_index": 10,
+      "transformer_recall_fidelity": 0.9999,
+      "bdh_recall_fidelity": 0.5571,
+      "interference_ratio": 0.4429
+    },
+    {
+      "seq_len": 100,
+      "depth_pct": 25,
+      "needle_index": 25,
+      "transformer_recall_fidelity": 1.0,
+      "bdh_recall_fidelity": 0.6992,
+      "interference_ratio": 0.3008
+    },
+    {
+      "seq_len": 100,
+      "depth_pct": 50,
+      "needle_index": 50,
+      "transformer_recall_fidelity": 1.0,
+      "bdh_recall_fidelity": 0.6622,
+      "interference_ratio": 0.3378
+    },
+    {
+      "seq_len": 100,
+      "depth_pct": 75,
+      "needle_index": 75,
+      "transformer_recall_fidelity": 1.0,
+      "bdh_recall_fidelity": 0.5443,
+      "interference_ratio": 0.4557
+    },
+    {
+      "seq_len": 100,
+      "depth_pct": 90,
+      "needle_index": 90,
+      "transformer_recall_fidelity": 1.0,
+      "bdh_recall_fidelity": 0.7113,
+      "interference_ratio": 0.2887
+    },
+    {
+      "seq_len": 250,
+      "depth_pct": 10,
+      "needle_index": 25,
+      "transformer_recall_fidelity": 0.9999,
+      "bdh_recall_fidelity": 0.3909,
+      "interference_ratio": 0.6091
+    },
+    {
+      "seq_len": 250,
+      "depth_pct": 25,
+      "needle_index": 62,
+      "transformer_recall_fidelity": 0.9999,
+      "bdh_recall_fidelity": 0.3787,
+      "interference_ratio": 0.6213
+    },
+    {
+      "seq_len": 250,
+      "depth_pct": 50,
+      "needle_index": 125,
+      "transformer_recall_fidelity": 0.9999,
+      "bdh_recall_fidelity": 0.2904,
+      "interference_ratio": 0.7096
+    },
+    {
+      "seq_len": 250,
+      "depth_pct": 75,
+      "needle_index": 187,
+      "transformer_recall_fidelity": 0.9999,
+      "bdh_recall_fidelity": 0.3726,
+      "interference_ratio": 0.6274
+    },
+    {
+      "seq_len": 250,
+      "depth_pct": 90,
+      "needle_index": 225,
+      "transformer_recall_fidelity": 0.9999,
+      "bdh_recall_fidelity": 0.406,
+      "interference_ratio": 0.594
+    },
+    {
+      "seq_len": 500,
+      "depth_pct": 10,
+      "needle_index": 50,
+      "transformer_recall_fidelity": 0.9998,
+      "bdh_recall_fidelity": 0.2835,
+      "interference_ratio": 0.7165
+    },
+    {
+      "seq_len": 500,
+      "depth_pct": 25,
+      "needle_index": 125,
+      "transformer_recall_fidelity": 0.9997,
+      "bdh_recall_fidelity": 0.3339,
+      "interference_ratio": 0.6661
+    },
+    {
+      "seq_len": 500,
+      "depth_pct": 50,
+      "needle_index": 250,
+      "transformer_recall_fidelity": 0.9998,
+      "bdh_recall_fidelity": 0.515,
+      "interference_ratio": 0.485
+    },
+    {
+      "seq_len": 500,
+      "depth_pct": 75,
+      "needle_index": 375,
+      "transformer_recall_fidelity": 0.9998,
+      "bdh_recall_fidelity": 0.4212,
+      "interference_ratio": 0.5788
+    },
+    {
+      "seq_len": 500,
+      "depth_pct": 90,
+      "needle_index": 450,
+      "transformer_recall_fidelity": 0.9999,
+      "bdh_recall_fidelity": 0.3117,
+      "interference_ratio": 0.6883
+    },
+    {
+      "seq_len": 1000,
+      "depth_pct": 10,
+      "needle_index": 100,
+      "transformer_recall_fidelity": 0.9996,
+      "bdh_recall_fidelity": 0.1976,
+      "interference_ratio": 0.8024
+    },
+    {
+      "seq_len": 1000,
+      "depth_pct": 25,
+      "needle_index": 250,
+      "transformer_recall_fidelity": 0.9995,
+      "bdh_recall_fidelity": 0.0455,
+      "interference_ratio": 0.9545
+    },
+    {
+      "seq_len": 1000,
+      "depth_pct": 50,
+      "needle_index": 500,
+      "transformer_recall_fidelity": 0.9997,
+      "bdh_recall_fidelity": 0.3064,
+      "interference_ratio": 0.6936
+    },
+    {
+      "seq_len": 1000,
+      "depth_pct": 75,
+      "needle_index": 750,
+      "transformer_recall_fidelity": 0.9996,
+      "bdh_recall_fidelity": 0.2061,
+      "interference_ratio": 0.7939
+    },
+    {
+      "seq_len": 1000,
+      "depth_pct": 90,
+      "needle_index": 900,
+      "transformer_recall_fidelity": 0.9997,
+      "bdh_recall_fidelity": 0.4462,
+      "interference_ratio": 0.5538
+    },
+    {
+      "seq_len": 2000,
+      "depth_pct": 10,
+      "needle_index": 200,
+      "transformer_recall_fidelity": 0.9992,
+      "bdh_recall_fidelity": 0.0,
+      "interference_ratio": 1.0
+    },
+    {
+      "seq_len": 2000,
+      "depth_pct": 25,
+      "needle_index": 500,
+      "transformer_recall_fidelity": 0.9996,
+      "bdh_recall_fidelity": 0.0,
+      "interference_ratio": 1.0
+    },
+    {
+      "seq_len": 2000,
+      "depth_pct": 50,
+      "needle_index": 1000,
+      "transformer_recall_fidelity": 0.9993,
+      "bdh_recall_fidelity": 0.0,
+      "interference_ratio": 1.0
+    },
+    {
+      "seq_len": 2000,
+      "depth_pct": 75,
+      "needle_index": 1500,
+      "transformer_recall_fidelity": 0.9989,
+      "bdh_recall_fidelity": 0.2491,
+      "interference_ratio": 0.7509
+    },
+    {
+      "seq_len": 2000,
+      "depth_pct": 90,
+      "needle_index": 1800,
+      "transformer_recall_fidelity": 0.9991,
+      "bdh_recall_fidelity": 0.3002,
+      "interference_ratio": 0.6998
+    },
+    {
+      "seq_len": 4000,
+      "depth_pct": 10,
+      "needle_index": 400,
+      "transformer_recall_fidelity": 0.9984,
+      "bdh_recall_fidelity": 0.0135,
+      "interference_ratio": 0.9865
+    },
+    {
+      "seq_len": 4000,
+      "depth_pct": 25,
+      "needle_index": 1000,
+      "transformer_recall_fidelity": 0.9984,
+      "bdh_recall_fidelity": 0.1488,
+      "interference_ratio": 0.8512
+    },
+    {
+      "seq_len": 4000,
+      "depth_pct": 50,
+      "needle_index": 2000,
+      "transformer_recall_fidelity": 0.9985,
+      "bdh_recall_fidelity": 0.0,
+      "interference_ratio": 1.0
+    },
+    {
+      "seq_len": 4000,
+      "depth_pct": 75,
+      "needle_index": 3000,
+      "transformer_recall_fidelity": 0.998,
+      "bdh_recall_fidelity": 0.322,
+      "interference_ratio": 0.678
+    },
+    {
+      "seq_len": 4000,
+      "depth_pct": 90,
+      "needle_index": 3600,
+      "transformer_recall_fidelity": 0.9988,
+      "bdh_recall_fidelity": 0.047,
+      "interference_ratio": 0.953
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF9F5;
+    color: #1C1B19;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Newsreader', Georgia, serif;
+    font-feature-settings: "pnum" 1, "onum" 1;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-handwriting {
+    font-family: 'Caveat', cursive;
+  }
+}
+
+/* Notebook Sticky Note Effect */
+.sticky-note {
+  background: #FFFDF0;
+  border: 1px solid #E8E2BE;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+.sticky-note::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 30%;
+  width: 50px;
+  height: 16px;
+  background: rgba(220, 215, 185, 0.5);
+  transform: rotate(-3deg);
+  border-radius: 1px;
+}
+
+/* Handwritten Margin Callout */
+.margin-note {
+  font-family: 'Caveat', cursive;
+  color: #C85A32;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+/* Highlighter effect */
+.highlight-pen {
+  background: linear-gradient(120deg, rgba(254, 240, 138, 0.6) 0%, rgba(254, 240, 138, 0.9) 100%);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+/* Subtle Notebook Ruled Lines */
+.ruled-lines {
+  background-image: linear-gradient(#ECE8DC 1px, transparent 1px);
+  background-size: 100% 28px;
+}
+
+/* Clean Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF9F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5D1C3;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B4B0A2;
+}
