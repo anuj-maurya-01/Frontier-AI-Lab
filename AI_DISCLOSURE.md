@@ -11,6 +11,7 @@ In compliance with the DataForge 2026 submission guidelines and academic honesty
 
 ### Tools Used
 - **Google Antigravity / Gemini:** Utilized for rapid boilerplate scaffolding, refactoring TypeScript interfaces, checking LaTeX math formatting, and structuring narrative documentation.
+- **OpenAI Codex:** Used to help audit the submission package, tighten claim labels and citations, draft README/source-record/disclosure language, and regenerate the HTML-to-PDF deliverables.
 
 ---
 
@@ -30,6 +31,10 @@ In compliance with the DataForge 2026 submission guidelines and academic honesty
 
 4. **Documentation & Content:**
    - Drafted documentation was iteratively refined to ensure technical rigor, precise citations to primary research (arXiv:2509.26507, arXiv:2608.09888), and clear demarcation between published literature and educational simulations.
+
+5. **Design, research, and final packaging:**
+   - AI assistance proposed information architecture, copy edits, and citation leads. Humans selected the final claims and sources, checked the linked primary-paper metadata, and are responsible for any remaining factual errors.
+   - The blog and concept-summary PDFs were composed from project-authored HTML/CSS. AI did not generate external artwork, datasets, trained weights, or experimental measurements for this submission.
 
 ---
 

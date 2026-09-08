@@ -73,3 +73,21 @@ The application is engineered with React, Vite, and Tailwind CSS, providing sub-
 2. **Real-time VRAM Gauges:** Live physical GPU memory meters showing Transformer OOM crashes alongside BDH flatlines.
 3. **Live "Needle in a Haystack" Arena:** Live in-browser associative memory simulation demonstrating exact retrieval vs. interference noise.
 4. **Learner Challenge & Synthesis:** Self-assessment quiz and synthesis prompt reinforcing technical retention.
+
+---
+
+## 7. Evidence labels, comparison, and limitation
+
+The memory table is a **reproduction of an analytical allocation calculation** from this repository’s `experiments/verify_memory_and_recall.py`; it is not a measured deployment benchmark and it does not test BDH quality. The retrieval arena is a **synthetic** associative-memory illustration. PagedAttention is the relevant primary deployment evaluation: it measures how KV-cache memory management affects LLM-serving throughput and memory behavior (Kwon et al., 2023, https://doi.org/10.1145/3600006.3613165).
+
+Three representative choices have distinct trade-offs. A conventional Transformer keeps token-addressable KV tensors: its state storage grows with context, but it can attend directly to retained tokens. Mamba-2 uses a selective structured state-space model; its authors derive an attention/state-space duality and report a 2–8× faster core layer in their evaluated settings (Dao & Gu, 2024, https://arxiv.org/abs/2405.21060). BDH reports locally interacting neuron particles and synaptic-plasticity working memory (Kosowski et al., 2025, https://arxiv.org/abs/2509.26507). BDH-CQ is a reported extension toward recurrent latent reasoning, not a model run by this artifact (Kosowski et al., 2026, https://arxiv.org/abs/2608.09888). A controlled study comparing Mamba, Mamba-2, and Transformers at 8B scale shows why quality and hardware behavior must be evaluated together (Waleffe et al., 2024, https://arxiv.org/abs/2406.07887).
+
+The biggest open question is whether fixed-state architectures preserve the exact, long-horizon information and broad task quality needed in deployment, not whether a fixed-size tensor can remain constant in bytes. The project therefore treats BDH’s reported results as cited research and its own calculations/simulation as pedagogical reproductions only.
+
+## Primary sources (2023–2026)
+
+1. Kosowski, A. et al. (2025). *The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain.* https://arxiv.org/abs/2509.26507
+2. Kosowski, A. et al. (2026). *BDH-CQ: In-Context Learning with Recurrent Latent Reasoning.* https://arxiv.org/abs/2608.09888
+3. Dao, T. & Gu, A. (2024). *Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality.* https://arxiv.org/abs/2405.21060
+4. Waleffe, R. et al. (2024). *An Empirical Study of Mamba-based Language Models.* https://arxiv.org/abs/2406.07887
+5. Kwon, W. et al. (2023). *Efficient Memory Management for Large Language Model Serving with PagedAttention.* https://doi.org/10.1145/3600006.3613165

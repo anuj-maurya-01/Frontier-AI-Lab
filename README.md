@@ -1,150 +1,91 @@
-# Frontier AI Lab: The KV Cache Bottleneck vs. Dragon Hatchling (BDH)
+# Frontier AI Lab — KV cache and Dragon Hatchling (BDH)
 
-> **DataForge 2026 — Pathway Track: "Explain the Frontier" Challenge Submission**  
-> An interactive educational web experience dissecting the physical memory wall of Transformer sequence models and demonstrating how biological Hebbian plasticity in Dragon Hatchling achieves $O(1)$ constant memory.
+An interactive, browser-based explainer of a practical long-context trade-off: append-only Transformer KV caches versus fixed-size recurrent state. The submitted written deliverables are the [blog PDF](docs/blog.pdf) and the [one-page concept summary PDF](docs/concept-summary.pdf).
 
----
+**Live deployment:** [dataforge-vert-five.vercel.app](https://dataforge-vert-five.vercel.app/)
 
-## 🎯 The Central Falsifiable Claim
+## Falsifiable claim
 
-> **"When sequence length scales from $1\text{k}$ to $128\text{k}$ tokens, Transformer Key-Value (KV) cache memory scales linearly $O(N)$ causing VRAM exhaustion and OOM crashes, whereas Dragon Hatchling (BDH) recurrent memory maintains a strictly constant $O(1)$ footprint, subject to retrieval degradation (forgetting via interference) due to finite state capacity."**
+**For a fixed Transformer configuration and precision, its inference KV-cache allocation grows linearly with generated/context tokens; a recurrent architecture whose inference state has fixed dimensions has constant *state-storage* size with respect to token count, but this does not imply lossless long-horizon recall.** This is testable by varying sequence length while holding model shape, batch, precision, and allocator policy fixed. The repository’s calculator and synthetic associative-memory experiment test the two parts separately.
 
----
+## Intended learner, prerequisites, and objectives
 
-## 🧠 Key Features & Learning Journey
+This is for ML engineers, data scientists, and technically curious learners who know vectors/matrices and basic neural-network inference. Helpful, but not required: familiarity with self-attention, GPU memory, and Big-O notation.
 
-The application guides the learner through an intuitive 10-stage educational journey:
+After working through the artifact, a learner should be able to:
 
-1. **The OOM Crisis (Instant Hook):** Direct visual demonstration of a GPU running out of memory on long documents, while BDH maintains a flat $16\text{ MB}$ footprint.
-2. **The Bottleneck Problem:** Explains why autoregressive generation forced engineers to trade memory for compute ($O(N^3)$ recompute vs. $O(N)$ KV caching).
-3. **The Interactive Workbench (Live Sandbox):**
-   - **Context Length Slider:** $1,024 \to 131,072$ tokens with instant hardware VRAM recalculation.
-   - **Hardware Gauges:** Live physical memory bars against an $80\text{ GB}$ NVIDIA A100/H100 GPU threshold.
-   - **Append-Only Memory Tape vs. Synaptic Matrix:** Dynamic animated views of how storage slots expand token-by-token in Transformers vs. how $S_t \in \mathbb{R}^{d \times d}$ rewires in place in BDH.
-4. **Needle-in-a-Haystack Retrieval Arena (Ground Truth vs. Estimate):** Live in-browser associative memory simulation demonstrating exact lossless retrieval in Transformers against the gradual onset of associative interference noise in recurrent states.
-5. **Mathematical Deep Dive:** Side-by-side LaTeX formulations contrasting non-linear Softmax coupling with linear associative factorization and BDH Hebbian plasticity.
-6. **Dedicated BDH & BDH-CQ Module:** Clear demarcation between official published peer-reviewed research (arXiv:2509.26507, arXiv:2608.09888) and educational toy browser simulations.
-7. **Scientific Limitations & Trade-offs:** Detailed analysis of matrix rank bounds, superposition, and debunking common sequence model misconceptions.
-8. **Learner Challenge & Reflection:** Interactive knowledge assessment with instant feedback, confetti rewards, and an open synthesis prompt comparing learner responses to expert formulations.
+1. derive KV-cache bytes from layers, KV heads, head dimension, sequence length, batch size, and precision;
+2. distinguish state-storage scaling from compute, quality, model-weight storage, and allocator overhead;
+3. contrast token-addressable attention, recurrent/SSM-style state, and BDH’s plastic synaptic state; and
+4. identify why fixed state can trade exact retrieval for interference or forgetting rather than “solving” memory without a cost.
 
----
+## Architecture
 
-## 🔬 Scientific & Empirical Basis
+| Component | Role |
+| --- | --- |
+| `src/engine/memoryFormulas.ts` | Deterministic KV/state byte calculations used by the UI. |
+| `src/components/InteractiveSandbox/` | Controls, VRAM comparison, animated KV tape/state matrix, and retrieval arena. |
+| `src/engine/associativeMemoryToy.ts` | Small client-side associative-memory demonstration; it is not a BDH implementation. |
+| `experiments/verify_memory_and_recall.py` | Reproducible analytical table generator plus synthetic vector recall experiment. |
+| `results/*.json` | Checked-in output of that script, consumed as precomputed benchmark data. |
+| `docs/blog.pdf` | Long-form walkthrough, separate from the summary. |
+| `docs/concept-summary.pdf` | Standalone one-page briefing. |
 
-All memory allocations are verified through exact analytical formulas and empirical GPU hardware benchmarks:
+### What is live, precomputed, synthetic, or animated?
 
-$$\text{Memory}_{\text{KV}} = 2 \times n_{\text{layers}} \times n_{\text{heads\_kv}} \times d_{\text{head}} \times N \times B \times \text{bytes\_per\_elem}$$
+- **Live:** sliders and byte calculations; the browser retrieval toy.
+- **Precomputed:** `results/memory_scaling_benchmark.json` and `results/needle_retrieval_benchmark.json`, regenerated by the Python script.
+- **Synthetic:** randomly sampled, unit-normalized key/value vectors in the retrieval experiment. They are an illustration of associative interference, not a measured BDH benchmark.
+- **Animated:** the KV tape and BDH-style state-matrix graphics. They communicate allocation/update behavior and do not show model activations.
+- **Not live:** no hosted model, API, training run, or external data source is called by the page.
 
-$$\text{Memory}_{\text{BDH}} = n_{\text{layers}} \times (d_{\text{state}} \times d_{\text{state}}) \times B \times \text{bytes\_per\_elem} = O(1) \text{ w.r.t. } N$$
+## Evidence and honest scope
 
-### Key Benchmark Comparison (Batch = 1, FP16)
-| Sequence Length | Llama-3 70B KV Cache | Llama-3 8B KV Cache | BDH 1B Recurrent State | Memory Reduction |
-| :--- | :--- | :--- | :--- | :--- |
-| **512 tokens** | $0.16\text{ GB}$ | $0.06\text{ GB}$ | **$0.016\text{ GB}$ ($16\text{ MB}$)** | $10\times$ |
-| **8,192 tokens** | $2.50\text{ GB}$ | $1.00\text{ GB}$ | **$0.016\text{ GB}$ ($16\text{ MB}$)** | $156\times$ |
-| **32,768 tokens** | $10.00\text{ GB}$ | $4.00\text{ GB}$ | **$0.016\text{ GB}$ ($16\text{ MB}$)** | $625\times$ |
-| **65,536 tokens** | $20.00\text{ GB}$ | $8.00\text{ GB}$ | **$0.016\text{ GB}$ ($16\text{ MB}$)** | $1,250\times$ |
-| **131,072 tokens** | **$40.00\text{ GB}$** | $16.00\text{ GB}$ | **$0.016\text{ GB}$ ($16\text{ MB}$)** | **$2,564\times$** |
+The KV-byte formula used here is `2 × layers × KV_heads × head_dim × tokens × batch × bytes/element`; it is an allocation model and deliberately excludes model weights, temporary activations, paging/fragmentation, and runtime-specific overhead. PagedAttention is a primary systems evaluation of this serving problem and reports that KV-cache management materially affects LLM serving memory/throughput [Kwon et al., 2023](https://doi.org/10.1145/3600006.3613165).
 
-*(At Batch Size $B=4$ at 128k, Llama-3 70B requires $160\text{ GB}$ VRAM, crashing two $80\text{ GB}$ GPUs, while BDH requires only $64\text{ MB}$.)*
+BDH is represented as a published biologically inspired, attention-based state-space architecture with inference working memory based on synaptic plasticity; the authors evaluate language and translation models from 10M to 1B parameters [Kosowski et al., 2025](https://arxiv.org/abs/2509.26507). **This artifact does not reproduce those training or quality results.** BDH-CQ is included as a cited research direction for recurrent latent reasoning, not as a component executed in this app [Kosowski et al., 2026](https://arxiv.org/abs/2608.09888).
 
----
+For comparison, Mamba-2 develops a state-space/attention duality and reports a 2–8× faster core layer in its evaluated settings [Dao & Gu, 2024](https://arxiv.org/abs/2405.21060). A controlled 8B-scale study compares Mamba, Mamba-2, and Transformer models trained on up to 3.5T tokens, showing why fixed-state alternatives should be assessed on both quality and systems dimensions [Waleffe et al., 2024](https://arxiv.org/abs/2406.07887).
 
-## 🚀 Quickstart & Local Setup
+## Reproduce locally
 
 ### Prerequisites
-- Node.js (v18+ recommended, tested on v24)
-- Python 3.10+ (for running offline benchmark scripts)
 
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/your-username/frontier-ai-lab.git
-cd frontier-ai-lab
+- Node.js 18+ (the current lockfile was tested with Node 24)
+- Python 3.10+ for the offline verification script; it uses only the Python standard library
 
-# Install web dependencies
+```powershell
 npm install
-
-# Run offline benchmark verification (regenerates results/ datasets)
 python experiments/verify_memory_and_recall.py
-
-# Start local interactive development server
 npm run dev
 ```
-Open your browser at `http://localhost:3000` to interact with the workbench.
 
-### Production Build
-```bash
+Open the local Vite URL printed by the terminal (normally `http://localhost:5173`). For a production check:
+
+```powershell
 npm run build
 npm run preview
 ```
 
----
+The verification script overwrites only the two JSON files in `results/`. It seeds the synthetic random experiment (`42`) so its output is repeatable. To recreate the PDFs after editing their HTML sources, run Chrome headlessly:
 
-## 📂 Repository Structure
-
-```
-├── docs/
-│   ├── concept-summary.md       # One-page structured brief (500–950 words)
-│   └── blog.md                  # Comprehensive long-form technical article
-├── experiments/
-│   └── verify_memory_and_recall.py # Analytical VRAM math & associative recall simulator
-├── results/
-│   ├── memory_scaling_benchmark.json   # Verified VRAM tables (512 to 131k tokens)
-│   └── needle_retrieval_benchmark.json # Synthetic needle recall vs. interference data
-├── src/
-│   ├── components/
-│   │   ├── Navbar.tsx                   # Navigation & challenge badges
-│   │   ├── HeroHook.tsx                 # Step 1: OOM alert & live slider teaser
-│   │   ├── ProblemFraming.tsx           # Step 2: Autoregressive decoding bottleneck
-│   │   ├── InteractiveSandbox/          # Steps 3-5: Live interactive workbench
-│   │   │   ├── ControlsPanel.tsx        # Sliders for context length, batch, precision
-│   │   │   ├── VRAMComparisonView.tsx   # Dual GPU memory meters & OOM warnings
-│   │   │   ├── KVMemoryGrid.tsx         # Append-only tape allocation visualizer
-│   │   │   ├── BDHStateMatrix.tsx       # Fixed-geometry Hebbian state visualizer
-│   │   │   ├── RetrievalArena.tsx       # Needle-in-a-haystack ground truth arena
-│   │   │   └── InteractiveSandbox.tsx   # Sandbox layout & tabs
-│   │   ├── MathematicalDeepDive.tsx     # Step 6: Step-by-step LaTeX derivations
-│   │   ├── BDHArchitectureModule.tsx   # Step 7: Dragon Hatchling & BDH-CQ evidence
-│   │   ├── LimitationsAndTradeoffs.tsx  # Step 8: Capacity limits & misconceptions
-│   │   ├── LearnerChallenge.tsx         # Steps 9-10: Quiz & written reflection
-│   │   └── Footer.tsx                   # Citations and disclosures
-│   ├── engine/
-│   │   ├── memoryFormulas.ts            # Physical VRAM equations
-│   │   ├── associativeMemoryToy.ts      # Live linear associative simulation engine
-│   │   └── benchmarkData.ts             # Precomputed benchmark data
-│   ├── App.tsx                          # App container with smooth scroll tracking
-│   ├── index.css                        # Tailwind CSS styling
-│   └── main.tsx
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-├── SOURCES_AND_LICENSES.md
-└── AI_DISCLOSURE.md
+```powershell
+& 'C:\Program Files\Google\Chrome\Application\chrome.exe' --headless --disable-gpu --print-to-pdf="$PWD\docs\blog.pdf" "$PWD\docs\blog.html"
+& 'C:\Program Files\Google\Chrome\Application\chrome.exe' --headless --disable-gpu --print-to-pdf="$PWD\docs\concept-summary.pdf" "$PWD\docs\concept-summary.html"
 ```
 
----
+## Sources, licenses, and AI assistance
 
-## 📜 Primary Research Literature
+The complete, item-level [source and license record](SOURCES_AND_LICENSES.md) covers papers, code packages, fonts, icons, data, graphics, and model weights. The [AI-assistance disclosure](AI_DISCLOSURE.md) records AI use across writing, code, design, and research, and identifies human review responsibility.
 
-1. **Kosowski, A., Uznański, P., Chorowski, J., Stamirowska, Z., & Bartoszkiewicz, M.** (2025).  
-   *The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain.*  
-   [arXiv:2509.26507](https://arxiv.org/abs/2509.26507)
+Code is licensed under [Apache-2.0](LICENSE). Original documentation is CC BY 4.0 unless a cited/reused source specifies otherwise. The project ships no pretrained weights, third-party datasets, or raster graphics.
 
-2. **Kosowski, A., et al.** (2026).  
-   *BDH-CQ: In-Context Learning with Recurrent Latent Reasoning.*  
-   [arXiv:2608.09888](https://arxiv.org/abs/2608.09888)
+## Primary papers (2022–2026)
 
-3. **Dao, T., & Gu, A.** (2024).  
-   *Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2).*  
-   [arXiv:2405.21060](https://arxiv.org/abs/2405.21060)
+These recent primary sources are cited adjacent to the claims above and in both PDFs:
 
-4. **Kwon, W., et al.** (2023).  
-   *Efficient Memory Management for Large Language Model Serving with PagedAttention.*  
-   ACM SOSP 2023.
-
----
-
-## 📄 License & Attribution
-- Code: Open-source under the [Apache-2.0 License](LICENSE).
-- Content & Documentation: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+1. Kosowski et al. (2025), [*The Dragon Hatchling*](https://arxiv.org/abs/2509.26507).
+2. Kosowski et al. (2026), [*BDH-CQ*](https://arxiv.org/abs/2608.09888).
+3. Dao & Gu (2024), [*Transformers are SSMs*](https://arxiv.org/abs/2405.21060).
+4. Waleffe et al. (2024), [*An Empirical Study of Mamba-based Language Models*](https://arxiv.org/abs/2406.07887).
+5. Kwon et al. (2023), [*Efficient Memory Management for Large Language Model Serving with PagedAttention*](https://doi.org/10.1145/3600006.3613165).

@@ -8,15 +8,15 @@
 
     @page {
       size: letter;
-      margin: 0.7in 0.75in;
+      margin: 0.42in 0.5in;
     }
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
       color: #1c1917;
       background-color: #ffffff;
-      line-height: 1.5;
-      font-size: 9.5pt;
+      line-height: 1.28;
+      font-size: 8.35pt;
       margin: 0;
       padding: 0;
     }
@@ -28,8 +28,8 @@
 
     header {
       border-bottom: 2px solid #1c1917;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
+      padding-bottom: 5px;
+      margin-bottom: 7px;
     }
 
     .metadata {
@@ -43,7 +43,7 @@
 
     h1 {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 19pt;
+      font-size: 17pt;
       font-weight: 700;
       line-height: 1.15;
       margin: 0 0 4px 0;
@@ -53,7 +53,7 @@
     .subtitle {
       font-family: 'Newsreader', Georgia, serif;
       font-style: italic;
-      font-size: 10pt;
+      font-size: 9pt;
       color: #44403c;
       margin: 0;
     }
@@ -61,9 +61,9 @@
     .claim-box {
       background: #fafaf9;
       border-left: 3px solid #c2410c;
-      padding: 8px 12px;
-      margin: 10px 0;
-      font-size: 9pt;
+      padding: 5px 8px;
+      margin: 6px 0;
+      font-size: 8pt;
     }
 
     .claim-box strong {
@@ -77,16 +77,16 @@
 
     h2 {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 11pt;
+      font-size: 10pt;
       font-weight: 700;
       color: #1c1917;
       border-bottom: 1px solid #e7e5e4;
       padding-bottom: 2px;
-      margin: 10px 0 4px 0;
+      margin: 6px 0 3px 0;
     }
 
     p {
-      margin: 0 0 6px 0;
+      margin: 0 0 4px 0;
       text-align: justify;
     }
 
@@ -96,7 +96,7 @@
       padding: 4px 8px;
       border-radius: 3px;
       font-size: 8pt;
-      margin: 6px 0;
+      margin: 4px 0;
       text-align: center;
     }
 
@@ -104,7 +104,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin: 8px 0;
+      margin: 5px 0;
     }
 
     .card {
@@ -131,7 +131,7 @@
 
     th, td {
       border: 1px solid #d6d3d1;
-      padding: 3px 6px;
+      padding: 2px 4px;
       text-align: left;
     }
 
@@ -146,7 +146,7 @@
     footer {
       border-top: 1px solid #d6d3d1;
       padding-top: 6px;
-      margin-top: 10px;
+      margin-top: 6px;
       font-size: 7pt;
       font-family: 'JetBrains Mono', monospace;
       color: #78716c;
@@ -189,7 +189,7 @@
       Because <em>S_t</em> remains a constant <em>d × d</em> matrix at every step, sequence length determines only the number of recurrent updates, <strong>never the memory footprint</strong>. A 1B-parameter BDH model requires just <strong>16.77 MB</strong> of state memory whether processing 500 or 5,000,000 tokens—a <strong>2,564× reduction</strong> compared to Llama-3 70B at 128k context.
     </p>
 
-    <h2>3. Verified Empirical Benchmark Summary</h2>
+    <h2>3. Reproducible analytical allocation (not a BDH quality evaluation)</h2>
     <table>
       <thead>
         <tr>
@@ -214,10 +214,12 @@
       While Transformers offer lossless recall by keeping all tokens isolated, BDH compresses unbounded history into a finite matrix. By linear algebra, a matrix of size <em>d</em> has rank at most <em>d</em>. When sequence length <em>N ≫ d</em>, key-value associations are stored in <strong>superposition</strong>. Cross-talk noise between stored memories scales as <em>O(√N)</em>, causing older or non-reinforced facts to gradually blur. This establishes the fundamental trade-off: <strong>unbounded lossless memory (Transformer) vs. bounded constant memory (BDH)</strong>.
     </p>
 
-    <h2>5. BDH-CQ & The Reasoning Horizon</h2>
+    <h2>5. BDH-CQ, Mamba-2, and the open question</h2>
     <p>
       In <strong>BDH-CQ</strong> (<em>arXiv:2608.09888</em>), Pathway extended this principle to reasoning tasks. Instead of generating verbose Chain-of-Thought text tokens that flood the KV cache, BDH-CQ iterates in continuous latent space, achieving <strong>29.5% pass@2</strong> on ARC-AGI-1 at an inference cost of just <strong>$0.0007 per task</strong>. The inevitable future architecture will be <strong>hybrid</strong>: combining a short local attention window for exact syntax with a recurrent biological state for global context.
     </p>
+
+    <p><strong>Evidence labels:</strong> the table is an analytical reproduction from <code>experiments/verify_memory_and_recall.py</code>; the retrieval toy is synthetic. Published-architecture claims are attributed to Kosowski et al. (2025, 2026), Dao &amp; Gu (2024), Waleffe et al. (2024), and Kwon et al. (2023).</p>
 
     <footer>
       <span>DataForge 2026 // Pathway Track // Artifact by Anuj & Team</span>
