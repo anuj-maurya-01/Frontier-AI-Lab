@@ -4,6 +4,16 @@ An interactive, browser-based explainer of a practical long-context trade-off: a
 
 **Live deployment:** [dataforge-vert-five.vercel.app](https://dataforge-vert-five.vercel.app/)
 
+## Team
+
+| Role | Name |
+| --- | --- |
+| Team | Eduecho |
+| Leader | Anuj Maurya |
+| Member | Archita Kesharwani |
+| Member | Aru Shubham Singh |
+| Member | Shlok Bhardwaj |
+
 ## Falsifiable claim
 
 **For a fixed Transformer configuration and precision, its inference KV-cache allocation grows linearly with generated/context tokens; a recurrent architecture whose inference state has fixed dimensions has constant *state-storage* size with respect to token count, but this does not imply lossless long-horizon recall.** This is testable by varying sequence length while holding model shape, batch, precision, and allocator policy fixed. The repository’s calculator and synthetic associative-memory experiment test the two parts separately.
