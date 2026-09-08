@@ -17,7 +17,7 @@ export const HeroHook: React.FC<HeroHookProps> = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Author Byline */}
         <div className="text-xs text-stone-500 font-sans pb-3 mb-6 flex items-center justify-between border-b border-stone-200">
-          <span className="font-medium text-stone-800">By Anuj & the DataForge Team</span>
+          <span className="font-medium text-stone-800">By Anuj & Frontier AI Lab</span>
           <span>6 min interactive read</span>
         </div>
 

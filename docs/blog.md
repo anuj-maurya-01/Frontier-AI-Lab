@@ -1,6 +1,6 @@
 # Tearing Down the KV Cache Wall: How Dragon Hatchling (BDH) Achieves O(1) Context Memory Through Biological Recurrence
 
-*A Deep Technical Explainer for DataForge 2026 — Pathway Track*
+*A Frontier AI Lab technical explainer*
 
 ---
 
