@@ -4,6 +4,8 @@ An interactive, browser-based explainer of a practical long-context trade-off: a
 
 **Live deployment:** [dataforge-vert-five.vercel.app](https://dataforge-vert-five.vercel.app/)
 
+**Source code:** [github.com/anuj-maurya-01/Frontier-AI-Lab](https://github.com/anuj-maurya-01/Frontier-AI-Lab.git)
+
 ## Team
 
 | Role | Name |

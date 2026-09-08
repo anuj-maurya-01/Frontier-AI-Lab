@@ -12,6 +12,9 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center space-x-4 font-mono text-[11px]">
+            <a href="https://github.com/anuj-maurya-01/Frontier-AI-Lab.git" target="_blank" rel="noreferrer" className="hover:text-accent-terracotta inline-flex items-center gap-1 text-stone-700">
+              <span>GitHub</span><ExternalLink className="w-3 h-3" />
+            </a>
             <a href="https://arxiv.org/abs/2509.26507" target="_blank" rel="noreferrer" className="hover:text-accent-terracotta inline-flex items-center gap-1 text-stone-700">
               <span>BDH Paper</span><ExternalLink className="w-3 h-3" />
             </a>
